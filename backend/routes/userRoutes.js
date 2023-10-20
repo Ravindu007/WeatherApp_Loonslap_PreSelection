@@ -1,4 +1,8 @@
 const express = require("express");
+const multer = require("multer")
+
+
+const userMiddleware = multer();
 
 const router = express.Router();
 
@@ -8,9 +12,9 @@ const {loginUser, signupUser} = require("../controllers/userControllers")
 
 
 //loginRoute
-router.post("/login", loginUser)
+router.post("/login",userMiddleware.none(), loginUser)
 
 //signupRoute 
-router.post("/signup",signupUser )
+router.post("/signup",userMiddleware.none(), signupUser )
 
 module.exports = router;

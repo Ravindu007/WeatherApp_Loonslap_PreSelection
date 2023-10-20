@@ -4,6 +4,8 @@ require("dotenv").config();
 
 const app = express();
 
+app.use(express.json())
+
 //importing routes 
 const userRoutes = require("../backend/routes/userRoutes")
 
