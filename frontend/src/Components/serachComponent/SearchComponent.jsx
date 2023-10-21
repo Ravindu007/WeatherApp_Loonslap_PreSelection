@@ -7,54 +7,71 @@ const SearchComponent = () => {
   const [latitude, setLatitude] = useState("")
   const [longitude, setLogitude] = useState("")
 
-  //where we save data
+  //where we save data for that day
   const [results, setResults] = useState(null)
+
+  //forcast results
+  const [forcastResults, setForcastResults] = useState(null)
 
   //waiting till we generate results
   const [isLoading, setIsLoading] = useState(true)
+  const [isforcastingLoading , setIsForcastingLoading] = useState(true)
 
   const handleSubmit = async(e) => {
     e. preventDefault();
     
-    // send API request 
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=f20a26820745e14758cd4168868cbed1`)
-    const json = await response.json()
+    // send API request => one day
+    const responseOneDay = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=f20a26820745e14758cd4168868cbed1`)
+    const jsonOneDay = await responseOneDay.json()
 
-    if(response.ok){
-      setIsLoading(false);
-      setResults(json)
-      console.log(json);
+    if(responseOneDay.ok){
+      setResults(jsonOneDay)
     }
+
+
+
+    const responseForcast = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&exclude={hourly}&appid=f20a26820745e14758cd4168868cbed1`)
+    const jsonForcast = await responseForcast.json();
+
+    if(responseForcast.ok){
+      setIsLoading(false);
+      setIsForcastingLoading(false)
+      setForcastResults(jsonForcast.list)
+    }   
   }
 
   return (
-    <div className=''>
-      {/* search form */}
-      <form className='' onSubmit={handleSubmit}>
-        <h1>Search for wheather Results</h1>
-        <div className="form-group">
-          <label>Longitude</label>
-          <input 
-            type="text" 
-            className='form-control'
-            onChange={(e) => {setLogitude(e.target.value)}}
-            value={longitude}
-          />
-        </div>
-        <div className="form-group">
-          <label>Latitide</label>
-          <input 
-            type="text" 
-            className='form-control'
-            onChange={(e) => {setLatitude(e.target.value)}}
-            value={latitude}
-          />
-        </div>
-        <button className='btn btn-outline-primary' type='submit'>Search</button>
-      </form>
+    <div className='row'>
+      <div className="col-12">
+            {/* search form */}
+            <form className='' onSubmit={handleSubmit}>
+              <h1 className='text-2xl'>Search for wheather Results</h1>
+              <div className="form-group">
+                <label>Longitude</label>
+                <input 
+                  type="text" 
+                  className='form-control'
+                  onChange={(e) => {setLogitude(e.target.value)}}
+                  value={longitude}
+                />
+              </div>
+              <div className="form-group">
+                <label>Latitide</label>
+                <input 
+                  type="text" 
+                  className='form-control'
+                  onChange={(e) => {setLatitude(e.target.value)}}
+                  value={latitude}
+                />
+              </div>
+              <button className='btn btn-outline-secondary' type='submit'>Search</button>
+            </form>
+      </div>
 
-      {/* search results */}
-      {isLoading ? <LoadingCard/> : (<SearchResult results={results}/> )}
+      <div className="col-12 md:mt-5">
+          {/* search results */}
+          {isforcastingLoading ? <LoadingCard/> : (<SearchResult results={results} forcastResults={forcastResults}/> )}
+      </div>
     </div>
   )
 }

@@ -27,7 +27,7 @@ const Home = () => {
         if(response.ok){
           setIsLoadingColombo(false)
           setAllWeatherData(json)
-          //console.log(allWetherData);
+          console.log(allWetherData);
         }
       }
 
@@ -39,7 +39,7 @@ const Home = () => {
         if(response.ok){
           setIsForcastLoaded(false)
           setWeatherForcast(json.list)
-          console.log(weatherForcast);
+          //console.log(weatherForcast);
         }
       }
   
@@ -50,15 +50,15 @@ const Home = () => {
   
   return (
     <div>
-      <div className="container-1 mt-2 w-full">
+      <div className="container-1 w-full bg-slate-200">
 
         <div className="row">
             <Navbar/>
         </div>
 
-        <div className="row mt-10">
+        <div className="row mt-10 md:mt-0">
           {/* left pannel */}
-          <div className="col-sm-12 col-md-7 bg-slate-100 px-4 py-2">
+          <div className="col-sm-12 col-md-7  px-4 py-2">
 
               {isLoadingColombo ? <p>Loading...</p> : (
                 <>
@@ -69,7 +69,7 @@ const Home = () => {
 
 
               {/* up coming days weather of colombo */}
-              <div className="coming-days md:flex px-2 py-2 flex-col items-center">
+              <div className="coming-days md:flex px-2 py-3 flex-col items-center bg-slate-200">
                 {isForcastLoaded ? <p>Loading...</p> : (
                   <>
                   {/* 3 day forcast */}
@@ -88,7 +88,7 @@ const Home = () => {
                               if (dayIndex < 3) {
                                 // Process the forecast data for the desired times and days
                                 return (
-                                  <ForcastCard key={index} item={forecast} customclass={customClass} />
+                                  <ForcastCard key={index} item={forecast} customclass={customClass} parent="3day"/>
                                 );
                               }
                             }
@@ -97,7 +97,7 @@ const Home = () => {
                     )}
                       {/* 7 day forcast */}
                      {isShow7DayForcast && (
-                      <div className="7-dayForcast col-12 flex justify-center overflow-x-scroll md:overflow-x-auto">
+                      <div className="7-dayForcast col-12 flex justify-center overflow-x-scroll md:overflow-x-auto ">
                       {weatherForcast &&
                         weatherForcast.map((forecast, index) => {
                           // Calculate the day index (0-6) and the time index (0-7)
@@ -115,7 +115,7 @@ const Home = () => {
                           // Check if this is one of the desired times and within the first 7 days
                           if (dayIndex < 7 && desiredTimeIndices.includes(timeIndex)) {
                             return (
-                              <ForcastCard key={index} item={forecast} customclass={customClass}/>
+                              <ForcastCard key={index} item={forecast} customclass={customClass} parent="7day"/>
                             );
                           }
                     
@@ -125,14 +125,14 @@ const Home = () => {
                     
                     )}
 
-                    <div className="col-12 flex justify-center my-1">
+                    <div className="col-12 flex justify-center my-2">
                       <button 
                         className='btn bg-slate-300 w-2/3'
                         onClick={()=>{
                           setIsShow7DayForcast(!isShow7DayForcast)
                           setIsShow3DayForcast(!isShow3DayForcast)
                         }}
-                      >{isShow3DayForcast ? "View 7 Day forcast" : "Back"}</button>
+                      >{isShow3DayForcast ? "View 5 Day forcast" : "Back"}</button>
                     </div>
                   </>
                 )}
@@ -143,7 +143,7 @@ const Home = () => {
 
 
           {/* search pannel */}
-          <div className="col-sm-12 col-md-5 border-2 border-red-700">
+          <div className="col-sm-12 col-md-5 px-4">
             <SearchComponent/>
           </div>  
 

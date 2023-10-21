@@ -1,7 +1,6 @@
 import React from 'react'
 
-const ForcastCard = ({item, customclass, parent}) => {
-
+const SearchForecast = ({key,item,parent}) => {
   const formatDate_for3Days = (dateString) => {
     const options = {
       month: 'short', // Display the month as a three-letter abbreviation
@@ -24,7 +23,7 @@ const ForcastCard = ({item, customclass, parent}) => {
   }
 
   return (
-    <div className={`ForcastCard flex flex-col items-center h-40 w-40 bg-slate-300 mx-1 rounded-md ${customclass} shadow-md shadow-slate-300`}>
+    <div className={`ForcastCard my-2 col-12 flex justify-between items-center bg-slate-300 rounded-md shadow-md shadow-slate-300 md:text-xs`}>
       {parent === "3day" && (
         <p>{formatDate_for3Days(item.dt_txt)}</p>
       )}
@@ -32,10 +31,10 @@ const ForcastCard = ({item, customclass, parent}) => {
         <p className='text-xs'>{formatDate_for7Days(item.dt_txt)}</p>
       )}
       <p>{item.weather[0].description}</p>
-      <img width={50} height={50} src={`http://openweathermap.org/img/w/${item.weather[0].icon}.png`} alt="" />
+      <img width={30} height={30} src={`http://openweathermap.org/img/w/${item.weather[0].icon}.png`} alt="" />
       <p>{item.main.temp}</p>
     </div>
   )
 }
 
-export default ForcastCard
+export default SearchForecast
