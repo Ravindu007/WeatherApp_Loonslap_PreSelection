@@ -1,14 +1,18 @@
 import React, { useState } from 'react'
 import LoadingCard from '../Components/serachComponent/LoadingCard'
+import {useLogin} from  '../hooks/useLogin'
 
 const Login = () => {
 
-  const [emai, setEmail] = useState()
-  const [password,setPassword] = useState()
+  const [email, setEmail] = useState("")
+  const [password,setPassword] = useState("")
+
+  const {login, error, isLoading} = useLogin()
 
   const handleSubmit = async(e) => {
     e.preventDefault()
-    
+
+    await login(email, password)
   }
 
   return (
@@ -35,7 +39,7 @@ const Login = () => {
                         required
                         className='form-control'
                         onChange={(e)=>{setEmail(e.target.value)}}
-                        value={emai}
+                        value={email}
                       />
                     </div>
                     <div className="form-group">
@@ -48,10 +52,10 @@ const Login = () => {
                         value={password}
                       />
                     </div>
-                    <small className='error'></small>
+                    {error && <small>{error}</small>}
 
                     <div className="form-group">
-                    <button className='btn btn-outline-primary'>Login</button>
+                    <button className='btn btn-outline-primary' disabled={isLoading}>Login</button>
                     </div>
                   </form>
             </div>
