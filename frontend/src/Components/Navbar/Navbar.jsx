@@ -28,7 +28,7 @@ const Navbar = () => {
     <div className=''>
       {/* items */}
       <ul className='flex md:flex-row flex-col items-center gap-[4vw]'>
-        <li className='text-xl hover:text-black hover:underline hover:scale-110 transition-transform duration-200 hover:underline-offset-8'><Link>Login</Link></li>
+        <li className='text-xl hover:text-black hover:underline hover:scale-110 transition-transform duration-200 hover:underline-offset-8'><Link to="/login">Login</Link></li>
         <li className='text-xl hover:text-black hover:underline hover:scale-110 transition-transform duration-200 hover:underline-offset-8'><Link>Logout</Link></li>
       </ul>
     </div>
@@ -45,7 +45,7 @@ const Navbar = () => {
         >
           <div className="w-full h-screen flex  justify-center items-center bg-white text-black rounded-[20px] p-2 z-50">
             <ul className='flex flex-col gap-3'>
-              <Link className='hover:bg-primaryColor hover:text-black rounded-[20px] px-2'> Login </Link>
+              <Link to="/login" className='hover:bg-primaryColor hover:text-black rounded-[20px] px-2'> Login </Link>
               <Link className='hover:bg-primaryColor hover:text-black rounded-[20px] px-2'> Logout </Link>
             </ul>
           </div>

@@ -51,13 +51,12 @@ const Home = () => {
   return (
     <div>
       <div className="container-1 mt-2 w-full">
+
         <div className="row">
             <Navbar/>
         </div>
 
         <div className="row mt-10">
-
-
           {/* left pannel */}
           <div className="col-sm-12 col-md-7 bg-slate-100 px-4 py-2">
 
@@ -144,7 +143,7 @@ const Home = () => {
 
 
           {/* search pannel */}
-          <div className="col-sm-12 col-md-5">
+          <div className="col-sm-12 col-md-5 border-2 border-red-700">
             <SearchComponent/>
           </div>  
 
