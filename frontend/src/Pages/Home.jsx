@@ -70,14 +70,14 @@ const Home = () => {
                   <>
                   {/* 3 day forcast */}
                     {isShow3DayForcast && (
-                      <div className="3-dayForcast col-12 flex flex-row justify-center">
+                      <div className="3-dayForcast col-12 flex flex-row justify-center overflow-x-scroll md:overflow-x-auto">
                       {weatherForcast && weatherForcast.map((forecast, index) => {
                             // Calculate the day index (0-4) and the time index (0-7)
                             const dayIndex = Math.floor(index / 8);
                             const timeIndex = index % 8;
 
                             // Define the class based on conditions
-                            const customClass = dayIndex < 3 ? 'col-md-4' : '';
+                            const customClass = dayIndex < 3 ? 'col-sm-12 col-md-3' : '';
 
                             // Check if this is one of the desired times (1, 9, 17) and within the first 3 days
                             if (timeIndex === 1 || timeIndex === 9 || timeIndex === 17) {
@@ -91,8 +91,9 @@ const Home = () => {
                       })}
                       </div>
                     )}
+                      {/* 7 day forcast */}
                      {isShow7DayForcast && (
-                      <div className="7-dayForcast col-12 flex flex-row justify-center">
+                      <div className="7-dayForcast col-12 flex justify-center overflow-x-scroll md:overflow-x-auto">
                       {weatherForcast &&
                         weatherForcast.map((forecast, index) => {
                           // Calculate the day index (0-6) and the time index (0-7)
@@ -104,7 +105,7 @@ const Home = () => {
 
                           // Define a class based on conditions
                           const customClass = dayIndex < 7 && desiredTimeIndices.includes(timeIndex)
-                          ? 'col-md-2' // Specify your custom class name here
+                          ? 'col-sm-12 col-md-2' // Specify your custom class name here
                           : '';
                     
                           // Check if this is one of the desired times and within the first 7 days
@@ -120,15 +121,14 @@ const Home = () => {
                     
                     )}
 
-                    {/* 7 day forcast */}
-                    <div className="7-dayForcast col-12 flex justify-center my-1">
+                    <div className="col-12 flex justify-center my-1">
                       <button 
                         className='btn bg-slate-300 w-full'
                         onClick={()=>{
                           setIsShow7DayForcast(!isShow7DayForcast)
                           setIsShow3DayForcast(!isShow3DayForcast)
                         }}
-                      >View More</button>
+                      >{isShow3DayForcast ? "View 7 Day forcast" : "Back"}</button>
                     </div>
                   </>
                 )}
