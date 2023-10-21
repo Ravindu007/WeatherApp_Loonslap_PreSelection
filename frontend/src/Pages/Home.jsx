@@ -10,6 +10,10 @@ const Home = () => {
 
     const [isForcastLoaded, setIsForcastLoaded] = useState(true)
     const [weatherForcast, setWeatherForcast] = useState(null)
+
+
+    const [isShow3DayForcast, setIsShow3DayForcast] = useState(true)
+    const [isShow7DayForcast, setIsShow7DayForcast] = useState(false)
   
     useEffect(()=>{
 
@@ -61,26 +65,71 @@ const Home = () => {
 
 
               {/* up coming days weather of colombo */}
-              <div className="coming-days md:flex px-2 py-2 justify-center">
+              <div className="coming-days md:flex px-2 py-2 flex-col items-center">
                 {isForcastLoaded ? <p>Loading...</p> : (
                   <>
-                   {weatherForcast && weatherForcast.map((forecast, index) => {
-                          // Calculate the day index (0-4) and the time index (0-7)
+                  {/* 3 day forcast */}
+                    {isShow3DayForcast && (
+                      <div className="3-dayForcast col-12 flex flex-row justify-center">
+                      {weatherForcast && weatherForcast.map((forecast, index) => {
+                            // Calculate the day index (0-4) and the time index (0-7)
+                            const dayIndex = Math.floor(index / 8);
+                            const timeIndex = index % 8;
+
+                            // Define the class based on conditions
+                            const customClass = dayIndex < 3 ? 'col-md-4' : '';
+
+                            // Check if this is one of the desired times (1, 9, 17) and within the first 3 days
+                            if (timeIndex === 1 || timeIndex === 9 || timeIndex === 17) {
+                              if (dayIndex < 3) {
+                                // Process the forecast data for the desired times and days
+                                return (
+                                  <ForcastCard key={index} item={forecast} customclass={customClass} />
+                                );
+                              }
+                            }
+                      })}
+                      </div>
+                    )}
+                     {isShow7DayForcast && (
+                      <div className="7-dayForcast col-12 flex flex-row justify-center">
+                      {weatherForcast &&
+                        weatherForcast.map((forecast, index) => {
+                          // Calculate the day index (0-6) and the time index (0-7)
                           const dayIndex = Math.floor(index / 8);
                           const timeIndex = index % 8;
+                    
+                          // Define an array of desired time indices
+                          const desiredTimeIndices = [1, 9, 17, 25, 33, 41, 49];
 
-                          // Check if this is one of the desired times (1, 9, 17) and within the first 3 days
-                          if (timeIndex === 1 || timeIndex === 9 || timeIndex === 17) {
-                            if (dayIndex < 3) {
-                              // Process the forecast data for the desired times and days
-                              return (
-                                <ForcastCard key={index} item={forecast} />
-                              );
-                            }
+                          // Define a class based on conditions
+                          const customClass = dayIndex < 7 && desiredTimeIndices.includes(timeIndex)
+                          ? 'col-md-2' // Specify your custom class name here
+                          : '';
+                    
+                          // Check if this is one of the desired times and within the first 7 days
+                          if (dayIndex < 7 && desiredTimeIndices.includes(timeIndex)) {
+                            return (
+                              <ForcastCard key={index} item={forecast} customclass={customClass}/>
+                            );
                           }
+                    
+                          return null; // Skip other data points
+                        })}
+                    </div>
+                    
+                    )}
 
-                    })}
-
+                    {/* 7 day forcast */}
+                    <div className="7-dayForcast col-12 flex justify-center my-1">
+                      <button 
+                        className='btn bg-slate-300 w-full'
+                        onClick={()=>{
+                          setIsShow7DayForcast(!isShow7DayForcast)
+                          setIsShow3DayForcast(!isShow3DayForcast)
+                        }}
+                      >View More</button>
+                    </div>
                   </>
                 )}
               </div>
