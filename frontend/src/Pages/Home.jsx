@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import MainWeatherCard from '../Components/mainWetherCard/MainWeatherCard'
 import ForcastCard from '../Components/forcastCard/ForcastCard'
+import SearchComponent from '../Components/serachComponent/SearchComponent'
 
 const Home = () => {
 
@@ -88,9 +89,9 @@ const Home = () => {
 
 
 
-          {/* search bar */}
+          {/* search pannel */}
           <div className="col-sm-12 col-md-5 border-red-500 border-2">
-            <h1>World</h1>
+            <SearchComponent/>
           </div>
         </div>
       </div>
