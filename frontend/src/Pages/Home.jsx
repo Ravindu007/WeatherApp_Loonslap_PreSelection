@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import MainWeatherCard from '../Components/mainWetherCard/MainWeatherCard'
 import ForcastCard from '../Components/forcastCard/ForcastCard'
 import SearchComponent from '../Components/serachComponent/SearchComponent'
+import Navbar from '../Components/Navbar/Navbar'
 
 const Home = () => {
 
@@ -49,12 +50,16 @@ const Home = () => {
   
   return (
     <div>
-      <div className="container-1 ">
+      <div className="container-1 mt-2 w-full">
         <div className="row">
+            <Navbar/>
+        </div>
+
+        <div className="row mt-10">
 
 
           {/* left pannel */}
-          <div className="col-sm-12 col-md-7 bg-slate-100 px-5 py-5">
+          <div className="col-sm-12 col-md-7 bg-slate-100 px-4 py-2">
 
               {isLoadingColombo ? <p>Loading...</p> : (
                 <>
@@ -123,7 +128,7 @@ const Home = () => {
 
                     <div className="col-12 flex justify-center my-1">
                       <button 
-                        className='btn bg-slate-300 w-full'
+                        className='btn bg-slate-300 w-2/3'
                         onClick={()=>{
                           setIsShow7DayForcast(!isShow7DayForcast)
                           setIsShow3DayForcast(!isShow3DayForcast)
@@ -139,9 +144,10 @@ const Home = () => {
 
 
           {/* search pannel */}
-          <div className="col-sm-12 col-md-5 border-red-500 border-2">
+          <div className="col-sm-12 col-md-5">
             <SearchComponent/>
-          </div>
+          </div>  
+
         </div>
       </div>
     </div>

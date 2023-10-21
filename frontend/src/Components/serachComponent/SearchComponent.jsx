@@ -4,8 +4,8 @@ import LoadingCard from './LoadingCard'
 
 const SearchComponent = () => {
 
-  const [latitude, setLatitude] = useState(null)
-  const [longitude, setLogitude] = useState(null)
+  const [latitude, setLatitude] = useState("")
+  const [longitude, setLogitude] = useState("")
 
   //where we save data
   const [results, setResults] = useState(null)
@@ -28,7 +28,7 @@ const SearchComponent = () => {
   }
 
   return (
-    <div>
+    <div className=''>
       {/* search form */}
       <form className='' onSubmit={handleSubmit}>
         <h1>Search for wheather Results</h1>
