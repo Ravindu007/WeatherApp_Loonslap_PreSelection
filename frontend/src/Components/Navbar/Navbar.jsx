@@ -1,8 +1,14 @@
 import React, { useState } from 'react'
 import {Link} from 'react-router-dom'
 import {motion as m} from 'framer-motion'
+import { UseLogout } from '../../hooks/UseLogout'
+import { useAuthContext } from '../../hooks/UseAuthContext'
 
 const Navbar = () => {
+
+  const {logout} = UseLogout()
+  const {user} = useAuthContext()
+
 
   const variants = {
     open: { opacity: 1, x: 0 },
@@ -16,20 +22,30 @@ const Navbar = () => {
       setMenu(!menu)
   }
 
+  const handleClick = () => {
+    logout()
+  }
+
   return (
   <>
    <nav className='hidden md:flex md:justify-between md:items-center md:mx-auto md:px-2 md:py-2 md:w-full bg-slate-300 px-4'>
     <div>
       {/* brand */}
       <span className='text-black text-2xl'>
-        Mickey Arther
+        {user && (
+          user.email == 'mickeyarthur@gmail.com' ? <p>Mickey Arthur</p> : <p></p>
+        )}
       </span>
     </div>
     <div className=''>
       {/* items */}
       <ul className='flex md:flex-row flex-col items-center gap-[4vw]'>
-        <li className='text-xl hover:text-black hover:underline hover:scale-110 transition-transform duration-200 hover:underline-offset-8'><Link to="/login">Login</Link></li>
-        <li className='text-xl hover:text-black hover:underline hover:scale-110 transition-transform duration-200 hover:underline-offset-8'><Link>Logout</Link></li>
+        {!user && (
+            <li className='text-xl hover:text-black hover:underline hover:scale-110 transition-transform duration-200 hover:underline-offset-8'><Link to="/login">Login</Link></li>
+        )}
+        {user && (
+          <li className='text-xl hover:text-black hover:underline hover:scale-110 transition-transform duration-200 hover:underline-offset-8'><Link onClick={handleClick}>Logout</Link></li>
+        )}
       </ul>
     </div>
    </nav>
@@ -45,8 +61,12 @@ const Navbar = () => {
         >
           <div className="w-full h-screen flex  justify-center items-center bg-white text-black rounded-[20px] p-2 z-50">
             <ul className='flex flex-col gap-3'>
-              <Link to="/login" className='hover:bg-primaryColor hover:text-black rounded-[20px] px-2'> Login </Link>
-              <Link className='hover:bg-primaryColor hover:text-black rounded-[20px] px-2'> Logout </Link>
+              {!user && (
+                <Link to="/login" className='hover:bg-primaryColor hover:text-black rounded-[20px] px-2'> Login </Link>
+              )}
+              {user && (
+                <Link className='hover:bg-primaryColor hover:text-black rounded-[20px] px-2'> Logout </Link>
+              )}
             </ul>
           </div>
         </m.nav>
