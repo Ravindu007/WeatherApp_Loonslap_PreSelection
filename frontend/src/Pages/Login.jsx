@@ -26,7 +26,7 @@ const Login = () => {
         <div className="row">
 
           {/* left part */}
-          <div className="d-none d-sm-block col-md-7">
+          <div className="col-sm-12 col-md-7">
             <div className="container flex flex-col h-100 sm:h-2/3 justify-center items-center">
               <LoadingCard/>
             </div>

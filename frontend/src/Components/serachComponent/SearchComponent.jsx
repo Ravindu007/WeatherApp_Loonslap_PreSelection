@@ -31,9 +31,9 @@ const SearchComponent = () => {
     }
 
     if(latitude && longitude){
-      if((latitude >= -90 && latitude <= 90) || (longitude >= -180 && longitude <= 180) ){
-        setError("Please enter valid Latitude and Longitude")
+      if((latitude <= -90 || latitude >= 90) || (longitude <= -180 || longitude >= 180) ){
         setIsLoadCardShowing(true)
+        setError("Please enter valid Latitude and Longitude")
       }
     }
     
@@ -49,8 +49,8 @@ const SearchComponent = () => {
     const jsonForcast = await responseForcast.json();
 
     if(responseForcast.ok){
-      setIsLoadCardShowing(false)
       setError(null)
+      setIsLoadCardShowing(false)
       setIsLoading(false);
       setIsForcastingLoading(false)
       setForcastResults(jsonForcast.list)

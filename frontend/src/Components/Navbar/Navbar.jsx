@@ -63,13 +63,16 @@ const Navbar = () => {
           animate={menu ? "open" : "closed"}
           variants={variants}
         >
-          <div className="w-full h-screen flex  justify-center items-center bg-white text-black rounded-[20px] p-2 z-50">
+          <div className="w-full flex  justify-center items-center bg-slate-200 text-black rounded-[20px] p-2 z-50">
             <ul className='flex flex-col gap-3'>
               {!user && (
                 <Link to="/login" className='hover:bg-primaryColor hover:text-black rounded-[20px] px-2'> Login </Link>
               )}
               {user && (
-                <Link className='hover:bg-primaryColor hover:text-black rounded-[20px] px-2'> Logout </Link>
+                <>
+                  <h1 className='h-7 w-full border-2'>{brandText}</h1>
+                  <Link onClick={handleClick}  className='h-7 w-[250px] hover:bg-primaryColor hover:text-black rounded-[20px] px-2'> Logout </Link>
+                </>
               )}
             </ul>
           </div>

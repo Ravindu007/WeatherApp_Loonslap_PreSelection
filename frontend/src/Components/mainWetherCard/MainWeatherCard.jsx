@@ -8,7 +8,7 @@ const MainWeatherCard = ({weather}) => {
     <div className="row md:h-80">
         {/* left part */}
         <div
-           className="col-sm-12 col-md-6 h-full bg-cover bg-center rounded-md"
+           className="col-sm-12 col-md-6 h-[200px] md:h-full bg-cover bg-center rounded-md"
            style={{
              backgroundImage: 'url("./assets/colombo.jpg")'
            }}
