@@ -137,7 +137,7 @@ const Home = () => {
                           setIsShow7DayForcast(!isShow7DayForcast)
                           setIsShow3DayForcast(!isShow3DayForcast)
                         }}
-                      >{isShow3DayForcast ? buttonText : "Back"}</button>
+                      >{isShow3DayForcast ? buttonText : "Back "}</button>
                     </div>
                   </>
                 )}
