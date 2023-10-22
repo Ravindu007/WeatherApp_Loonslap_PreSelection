@@ -26,7 +26,7 @@ const SearchComponent = () => {
     e. preventDefault();
 
     if(!latitude || !longitude ){
-      setError("Please Enter a value")
+      setError("Please Enter a value ")
       setIsLoadCardShowing(true)
     }
 
