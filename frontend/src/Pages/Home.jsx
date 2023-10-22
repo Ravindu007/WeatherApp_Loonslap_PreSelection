@@ -31,7 +31,6 @@ const Home = () => {
         if(response.ok){
           setIsLoadingColombo(false)
           setAllWeatherData(json)
-          console.log(allWetherData);
         }
       }
 

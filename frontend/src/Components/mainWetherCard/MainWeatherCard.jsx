@@ -24,7 +24,7 @@ const MainWeatherCard = ({weather}) => {
             <div className="row h-[50%]">
               <div className="col-6 border-2">
                 <div className="inner flex flex-col items-center justify-center m-1 bg-slate-300 h-[80%] rounded-md pl-2 shadow-md shadow-slate-400">
-                  <h1 className=''>{weather.weather[0].description}</h1>
+                  <h1 className='text-2xl md:text-3xl'>{weather.weather[0].description}</h1>
                 </div>
               </div>
               <div className="col-6 border-2">

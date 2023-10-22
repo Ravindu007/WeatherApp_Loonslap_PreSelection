@@ -24,7 +24,7 @@ const ForcastCard = ({item, customclass, parent}) => {
   }
 
   return (
-    <div className={`ForcastCard flex flex-col items-center h-40 w-40 bg-slate-300 mx-1 rounded-md ${customclass} shadow-md shadow-slate-300`}>
+    <div className={`ForcastCard flex flex-col items-center h-auto w-40 bg-slate-300 mx-1 rounded-md ${customclass} shadow-md shadow-slate-300`}>
       {parent === "3day" && (
         <p>{formatDate_for3Days(item.dt_txt)}</p>
       )}

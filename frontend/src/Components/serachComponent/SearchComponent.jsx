@@ -4,8 +4,8 @@ import LoadingCard from './LoadingCard'
 
 const SearchComponent = () => {
 
-  const [latitude, setLatitude] = useState(null)
-  const [longitude, setLogitude] = useState(null)
+  const [latitude, setLatitude] = useState("")
+  const [longitude, setLogitude] = useState("")
 
   const [error , setError] = useState(null)
 
