@@ -36,7 +36,7 @@ const SearchResult = ({results, forcastResults}) => {
         </div>
       </div>
       
-      <div className="row mt-2 bg-white border-2 border-red-400">
+      <div className="row mt-2 bg-white">
         <div className="forecastData  w-full">
             <div className="coming-days md:flex flex-col px-2 py-1 bg-slate-200">
 
