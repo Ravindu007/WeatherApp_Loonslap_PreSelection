@@ -3,8 +3,12 @@ import MainWeatherCard from '../Components/mainWetherCard/MainWeatherCard'
 import ForcastCard from '../Components/forcastCard/ForcastCard'
 import SearchComponent from '../Components/serachComponent/SearchComponent'
 import Navbar from '../Components/Navbar/Navbar'
+import useTextAnimation from '../hooks/UseTextAnnimation'
 
 const Home = () => {
+
+    const buttonText = useTextAnimation(['View 5 Day Forcast'], 100, 100);
+
 
     const [isLoadingColombo, setIsLoadingColombo] = useState(true)
     const [allWetherData,setAllWeatherData] = useState(null)
@@ -127,13 +131,13 @@ const Home = () => {
 
                     <div className="col-12 flex justify-center my-2">
                       <button 
-                        className='btn btn-outline-secondary  w-2/3'
+                        className='btn btn-outline-secondary h-7 flex items-center justify-center w-2/3'
                         style={{fontWeight:'400'}}
                         onClick={()=>{
                           setIsShow7DayForcast(!isShow7DayForcast)
                           setIsShow3DayForcast(!isShow3DayForcast)
                         }}
-                      >{isShow3DayForcast ? "View 5 Day forcast" : "Back"}</button>
+                      >{isShow3DayForcast ? buttonText : "Back"}</button>
                     </div>
                   </>
                 )}

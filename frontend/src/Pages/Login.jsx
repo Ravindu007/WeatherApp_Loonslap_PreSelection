@@ -5,6 +5,7 @@ import useTextAnimation from '../hooks/UseTextAnnimation';
 
 const Login = () => {
 
+  // text annimation
   const texts = ['Mickey Arthur'];
   const loginText = useTextAnimation(texts, 100, 100);
 

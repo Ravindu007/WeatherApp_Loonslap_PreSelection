@@ -3,8 +3,12 @@ import {Link} from 'react-router-dom'
 import {motion as m} from 'framer-motion'
 import { UseLogout } from '../../hooks/UseLogout'
 import { useAuthContext } from '../../hooks/UseAuthContext'
+import useTextAnimation from '../../hooks/UseTextAnnimation'
 
 const Navbar = () => {
+
+  // text annimation - for search here
+  const brandText = useTextAnimation(['Mickey Arther'], 300, 300);
 
   const {logout} = UseLogout()
   const {user} = useAuthContext()
@@ -33,7 +37,7 @@ const Navbar = () => {
       {/* brand */}
       <span className='text-black text-2xl'>
         {user && (
-          user.email == 'mickeyarthur@gmail.com' ? <p>Mickey Arthur</p> : <p></p>
+          user.email == 'mickeyarthur@gmail.com' ? <p className=' h-7'>{brandText}</p> : <p className='h-7'></p>
         )}
       </span>
     </div>

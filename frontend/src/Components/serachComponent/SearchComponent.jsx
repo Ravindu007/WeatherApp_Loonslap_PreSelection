@@ -62,7 +62,7 @@ const SearchComponent = () => {
       <div className="col-12">
             {/* search form */}
             <form className='' onSubmit={handleSubmit}>
-              <h1 className='text-xl'>Search for wheather Results</h1>
+              <h1 className='text-xl'>Search for whether results</h1>
               <div className="form-group">
                 <label>Longitude</label>
                 <input 
