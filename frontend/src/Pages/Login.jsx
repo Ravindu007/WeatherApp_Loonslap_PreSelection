@@ -1,8 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import LoadingCard from '../Components/serachComponent/LoadingCard'
 import {useLogin} from  '../hooks/useLogin'
+import useTextAnimation from '../hooks/UseTextAnnimation';
 
 const Login = () => {
+
+  const texts = ['Mickey Arthur'];
+  const loginText = useTextAnimation(texts, 100, 100);
 
   const [email, setEmail] = useState("")
   const [password,setPassword] = useState("")
@@ -22,9 +26,8 @@ const Login = () => {
 
           {/* left part */}
           <div className="d-none d-sm-block col-md-7">
-            <div className="container flex  flex-col h-screen sm:h-2/3 justify-center items-center">
+            <div className="container flex flex-col h-100 sm:h-2/3 justify-center items-center">
               <LoadingCard/>
-              <h1>Hi Mickey Arther</h1>
             </div>
           </div>
 
@@ -33,6 +36,7 @@ const Login = () => {
             <div className="form-container h-fit md:h-screen flex flex-col items-center justify-center">
                   {/* login form */}
                   <form className='w-full px-4' onSubmit={handleSubmit}>
+                    <h1 className='text-3xl'>Hi  {loginText}</h1>
                     <div className="form-group">
                       <label>Email</label>
                       <input 
