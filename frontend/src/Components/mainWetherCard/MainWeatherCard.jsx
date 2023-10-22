@@ -15,7 +15,7 @@ const MainWeatherCard = ({weather}) => {
         >
             <h1 className='text-5xl'>{weather.name}</h1>
             <h1 className='text-3xl'>{weather.sys.country}</h1>
-            <h1 className='text-1xl'>{}</h1>
+            <h1 className='text-1xl'>{}</h1> 
         </div>
 
         {/* right part */}
@@ -44,7 +44,7 @@ const MainWeatherCard = ({weather}) => {
               <div className="col-6 border-2">
                 <div className="inner flex flex-col items-center justify-center m-1 bg-slate-300 h-[80%] rounded-md shadow-md shadow-slate-400">
                   <img src="./assets/icons/humidity.svg" width={50} alt="" />
-                  <h1 className=''>{weather.main.humidity}</h1>
+                  <h1 className=''>{weather.main.humidity} %</h1>
                 </div>
               </div>
             </div>

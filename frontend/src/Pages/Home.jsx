@@ -127,7 +127,7 @@ const Home = () => {
 
                     <div className="col-12 flex justify-center my-2">
                       <button 
-                        className='btn bg-slate-300 w-2/3'
+                        className='btn btn-outline-secondary  w-2/3'
                         style={{fontWeight:'400'}}
                         onClick={()=>{
                           setIsShow7DayForcast(!isShow7DayForcast)

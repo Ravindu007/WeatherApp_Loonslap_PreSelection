@@ -22,14 +22,15 @@ const Login = () => {
 
           {/* left part */}
           <div className="d-none d-sm-block col-md-7">
-            <div className="container flex h-screen sm:h-2/3 justify-center items-center">
+            <div className="container flex  flex-col h-screen sm:h-2/3 justify-center items-center">
               <LoadingCard/>
+              <h1>Hi Mickey Arther</h1>
             </div>
           </div>
 
           {/* right part */}
           <div className="col-sm-12 col-md-5">
-            <div className="form-container border-2 border-red h-fit md:h-screen flex flex-col items-center justify-center">
+            <div className="form-container h-fit md:h-screen flex flex-col items-center justify-center">
                   {/* login form */}
                   <form className='w-full px-4' onSubmit={handleSubmit}>
                     <div className="form-group">

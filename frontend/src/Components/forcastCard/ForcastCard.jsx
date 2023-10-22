@@ -28,12 +28,13 @@ const ForcastCard = ({item, customclass, parent}) => {
       {parent === "3day" && (
         <p>{formatDate_for3Days(item.dt_txt)}</p>
       )}
-      {parent="7day" && (
+      {parent ==="7day" && (
         <p className='text-xs'>{formatDate_for7Days(item.dt_txt)}</p>
       )}
       <p>{item.weather[0].description}</p>
       <img width={50} height={50} src={`http://openweathermap.org/img/w/${item.weather[0].icon}.png`} alt="" />
-      <p>{item.main.temp}</p>
+      <p>{item.main.temp} &#8451;</p>
+      <p>{item.main.humidity} %</p>
     </div>
   )
 }

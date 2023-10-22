@@ -50,7 +50,7 @@ const Navbar = () => {
     </div>
    </nav>
 
-  <div className="absolute w-full left-0 pl-5 visible md:hidden z-50 justify-self-center">
+  <div className="absolute w-full left-0 pl-2 visible md:hidden z-50 justify-self-start">
    {/* burger icon */}
     {!menu && (<img src="./assets/icons/menu1.svg" width={50} height={50} alt="" className='text-blue-600' onClick={showMenu}/>)}
     {menu && (<img src="./assets/icons/close.svg" width={50} height={50} alt="" onClick={showMenu}/>)}

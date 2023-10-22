@@ -26,8 +26,15 @@ const SearchComponent = () => {
     e. preventDefault();
 
     if(!latitude || !longitude ){
-      setError("Please Enter valid Latitude and Longitude")
+      setError("Please Enter a value")
       setIsLoadCardShowing(true)
+    }
+
+    if(latitude && longitude){
+      if((latitude >= -90 && latitude <= 90) || (longitude >= -180 && longitude <= 180) ){
+        setError("Please enter valid Latitude and Longitude")
+        setIsLoadCardShowing(true)
+      }
     }
     
     // send API request => one day
